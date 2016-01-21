@@ -7,12 +7,18 @@ public class Main {
         System.out.println("Enter binary number value: ");
         Scanner scanner = new Scanner(System.in);
         String buffer = scanner.nextLine();
-        System.out.println("You entered: " + buffer + "for conversion.\n");
+        System.out.println("You entered: " + buffer + " for conversion.\n");
         System.out.println("Procesing the data ....\n");
         System.out.println("The decimal conversion is: " + bin2Dec(buffer));
     }
 
-    public int bin2Dec(String input) {
-        
+    private static int bin2Dec(String input) {
+        int result = 0;
+        for(int i = 0; i < input.length(); i++) {
+            int position = input.length() - i - 1;
+            int digit = Character.getNumericValue(input.charAt(i));
+            result += digit * Math.pow(2, position);
+        }
+        return result;
     }
 }
